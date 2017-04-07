@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Update Song</title>
+  </head>
+  <body>
+    <form action="/songs/<%=@song.slug%>" method="post">
+      <!-- re create the entire form -->
+      <label>Name:</label>
+      <br><br>
+
+      <input type="text" name="song[name]" id="song_name" value="<%=@song.name%>">
+    </form>
+  </body>
+</html>
