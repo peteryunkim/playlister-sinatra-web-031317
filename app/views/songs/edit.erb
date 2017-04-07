@@ -6,11 +6,40 @@
   </head>
   <body>
     <form action="/songs/<%=@song.slug%>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="patch">
       <!-- re create the entire form -->
       <label>Name:</label>
       <br><br>
 
       <input type="text" name="song[name]" id="song_name" value="<%=@song.name%>">
+      <br><br>
+
+      <label>Choose an existing genre:</label>
+      <br><br>
+
+      <%Genre.all.each do |genre| %>
+        <input type="checkbox" name="song[genre_ids][]" id="<%= genre.name %>" value="<%=genre.id%>"
+        <%='checked' if @song.genres.include?(genre) %>><%=genre.name%></input>
+      <%end%>
+
+      <br><br>
+      <label> and or create new genre</label>
+      <br><br>
+      <label>genre name:</label>
+      <input type="text" name="genre[name]" id="genre_name"></input>
+      <br><br>
+      <%Artist.all.each do |song_artist| %>
+        <input type="radio" name="song[artist]" id="<%= song_artist.name %>" value="<%=song_artist.id%>"
+        <%='checked' if @song.artist == song_artist %>><%=song_artist.name%></input>
+      <%end%>
+
+      <br><br>
+      <label> and or create new artist</label>
+      <br><br>
+      <label>artist name:</label>
+      <input type="text" name="artist[name]" id="Artist Name" value="<%=@song.artist.name%>"></input>
+      <br><br>
+      <input type="submit" value="Save">
     </form>
   </body>
 </html>

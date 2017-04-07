@@ -7,6 +7,8 @@
   <body>
     <h1>song info</h1>
 
+    <%=@song.name%>
+
     <a href="/artists/<%=@song.artist.slug%>">
       <%=@song.artist.name%></a>
 
@@ -15,6 +17,7 @@
     <%=genre.name%></a>
     <%end%>
 
+    Successfully created song.
 
 
   </body>
